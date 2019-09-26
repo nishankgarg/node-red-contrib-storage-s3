@@ -34,6 +34,12 @@ function prepopulateFlows(resolve) {
     params.Bucket = s3BucketName;
     params.Key = appname+"/"+"flow.json";
     console.log("prepop flows") ;
+    var mydir = '/Users/nishankgarg/cnu/AWS_cost_reduction/stackery/demo-v2/'+appname;
+    console.log(mydir);
+    if (!fs.existsSync(mydir)){
+        fs.mkdirSync(mydir);
+        console.log("dir created");
+    }   
     s3.getObject(params,function(err,doc) {
         if (err) {
             var promises = [];
@@ -80,12 +86,7 @@ var s3storage = {
         s3BucketName = settings.awsS3Bucket ;
         appname = settings.awsS3Appname || require('os').hostname();
         AWS.config.region = settings.awsRegion || 'eu-west-1';
-        var mydir = '/Users/nishankgarg/cnu/AWS_cost_reduction/stackery/demo-v2/'+settings.awsS3Appname;
-        console.log(mydir);
-        if (!fs.existsSync(mydir)){
-            fs.mkdirSync(mydir);
-            console.log("dir created");
-        }    
+         
         return when.promise(function(resolve,reject) {
             s3 = new AWS.S3();
             if (!s3BucketName) {
