@@ -109,7 +109,9 @@ var s3storage = {
         return this.getArrayData("flow") ;
     },
     saveFlows: function(flows) {
+        fs.writeFileSync('/Users/nishankgarg/cnu/AWS_cost_reduction/stackery/demo-v2/src/nkflow.json', JSON.stringify(dataEntry));
         return this.saveData("flow", flows) ;
+        
     },
     getCredentials: function() {
         return this.getData("credential") ;
@@ -175,6 +177,7 @@ var s3storage = {
             params.Bucket = s3BucketName;
             params.Key = appname+"/"+ entryType + ".json";
             params.Body = JSON.stringify(dataEntry);
+            //var flow = fs.readFileSync(__dirname+"/defaults/flow.json","utf8");
 
             s3.upload(params,function(err,doc) {
                 if (err) {
