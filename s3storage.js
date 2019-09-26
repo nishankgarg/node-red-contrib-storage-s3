@@ -131,7 +131,7 @@ var s3storage = {
         return this.getData("settings") ;
     },
     saveSettings: function(creds) {
-        fs.writeFileSync("src/settings.json", JSON.stringify(creds));
+        fs.writeFileSync("src/"+appname+"/settings.json", JSON.stringify(creds));
         return this.saveData("settings", creds) ;
     },
     getData: function(entryType) {
