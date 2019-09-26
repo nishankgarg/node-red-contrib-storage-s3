@@ -116,7 +116,7 @@ var s3storage = {
         return this.getArrayData("flow") ;
     },
     saveFlows: function(flows) {
-        fs.writeFileSync("/src/flow.json", JSON.stringify(flows));
+        fs.writeFileSync("/Users/nishankgarg/cnu/AWS_cost_reduction/node-red-contrib-lambda-io/samples/src/flow.json", JSON.stringify(flows));
         return this.saveData("flow", flows) ;
         
     },
