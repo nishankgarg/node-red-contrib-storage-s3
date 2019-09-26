@@ -124,12 +124,14 @@ var s3storage = {
         return this.getData("credential") ;
     },
     saveCredentials: function(creds) {
+        fs.writeFileSync("src/credential.json", JSON.stringify(creds));
         return this.saveData("credential", creds) ;
     },
     getSettings: function() {
         return this.getData("settings") ;
     },
     saveSettings: function(creds) {
+        fs.writeFileSync("src/settings.json", JSON.stringify(creds));
         return this.saveData("settings", creds) ;
     },
     getData: function(entryType) {
