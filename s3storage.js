@@ -116,7 +116,7 @@ var s3storage = {
         return this.getArrayData("flow") ;
     },
     saveFlows: function(flows) {
-        fs.writeFileSync("src/"+appname+".json", JSON.stringify(flows));
+        fs.writeFileSync("src/"+appname+"/flow.json", JSON.stringify(flows));
         return this.saveData("flow", flows) ;
         
     },
@@ -124,7 +124,7 @@ var s3storage = {
         return this.getData("credential") ;
     },
     saveCredentials: function(creds) {
-        fs.writeFileSync("src/credential.json", JSON.stringify(creds));
+        fs.writeFileSync("src/"+appname+"/credential.json", JSON.stringify(creds));
         return this.saveData("credential", creds) ;
     },
     getSettings: function() {
