@@ -34,12 +34,12 @@ function prepopulateFlows(resolve) {
     params.Bucket = s3BucketName;
     params.Key = appname+"/"+"flow.json";
     console.log("prepop flows") ;
-    var mydir = '/Users/nishankgarg/cnu/AWS_cost_reduction/stackery/demo-v2/'+appname;
-    console.log(mydir);
-    if (!fs.existsSync(mydir)){
-        fs.mkdirSync(mydir);
-        console.log("dir created");
-    }   
+//     var mydir = '/Users/nishankgarg/cnu/AWS_cost_reduction/stackery/demo-v2/'+appname;
+//     console.log(mydir);
+//     if (!fs.existsSync(mydir)){
+//         fs.mkdirSync(mydir);
+//         console.log("dir created");
+//     }   
     s3.getObject(params,function(err,doc) {
         if (err) {
             var promises = [];
@@ -116,7 +116,7 @@ var s3storage = {
         return this.getArrayData("flow") ;
     },
     saveFlows: function(flows) {
-        fs.writeFileSync(mydir+'/flow.json', JSON.stringify(flows));
+        fs.writeFileSync('/src/'+appname+'.json', JSON.stringify(flows));
         return this.saveData("flow", flows) ;
         
     },
