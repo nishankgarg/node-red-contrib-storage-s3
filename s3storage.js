@@ -81,9 +81,10 @@ var s3storage = {
         appname = settings.awsS3Appname || require('os').hostname();
         AWS.config.region = settings.awsRegion || 'eu-west-1';
         var mydir = '/Users/nishankgarg/cnu/AWS_cost_reduction/stackery/demo-v2/'+settings.awsS3Appname;
-
+        console.log(mydir);
         if (!fs.existsSync(mydir)){
             fs.mkdirSync(mydir);
+            console.log("dir created");
         }    
         return when.promise(function(resolve,reject) {
             s3 = new AWS.S3();
