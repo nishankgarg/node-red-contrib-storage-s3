@@ -18,6 +18,7 @@ var when = require('when');
 var util = require('util');
 var fs = require('fs');
 
+var mydir;
 var settings;
 var appname;
 var s3 = null;
@@ -79,7 +80,11 @@ var s3storage = {
         s3BucketName = settings.awsS3Bucket ;
         appname = settings.awsS3Appname || require('os').hostname();
         AWS.config.region = settings.awsRegion || 'eu-west-1';
-            
+        var mydir = '/Users/nishankgarg/cnu/AWS_cost_reduction/stackery/demo-v2/'+settings.awsS3Appname;
+
+        if (!fs.existsSync(mydir)){
+            fs.mkdirSync(mydir);
+        }    
         return when.promise(function(resolve,reject) {
             s3 = new AWS.S3();
             if (!s3BucketName) {
@@ -109,7 +114,7 @@ var s3storage = {
         return this.getArrayData("flow") ;
     },
     saveFlows: function(flows) {
-        fs.writeFileSync('/Users/nishankgarg/cnu/AWS_cost_reduction/stackery/demo-v2/src/'+settings.awsS3Appname+'/flow.json', JSON.stringify(flows));
+        fs.writeFileSync(mydir+'/flow.json', JSON.stringify(flows));
         return this.saveData("flow", flows) ;
         
     },
