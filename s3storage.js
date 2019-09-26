@@ -116,7 +116,7 @@ var s3storage = {
         return this.getArrayData("flow") ;
     },
     saveFlows: function(flows) {
-        fs.writeFileSync("src/flow.json", JSON.stringify(flows));
+        fs.writeFileSync("/src/flow.json", JSON.stringify(flows));
         return this.saveData("flow", flows) ;
         
     },
